@@ -11,14 +11,14 @@ export default function Header() {
             </div>
             <div className="info">
                 
-                <div className="start-node"><Node isStart={true}></Node>Start Node</div>
-                <div className="target-node"><Node isFinish={true}></Node>Target Node</div>
-                <div className="Wall-node"><Node isWall={true}></Node>Wall Node</div>
-                <div className="visited-node"><div className="v1"></div>Visited Node</div>
-                <div className="shortest-path"><div className="sp"></div>Shortest-path Node</div>
+                <div className="start-node"><Node isStart={true}></Node> Start Node</div>
+                <div className="target-node"><Node isFinish={true}></Node> Target Node</div>
+                <div className="Wall-node"><Node isWall={true}></Node> Wall Node</div>
+                <div className="visited-node"><div className="v1"></div> Visited Node</div>
+                <div className="shortest-path"><div className="sp"></div> Shortest-path Node</div>
             </div>
         </div>
-        <p className="cb">Reload for clearing the board board&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Click and drag on board to create walls</p>
+        <div className="cb">Reload for clearing the board&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Click and drag on board to create walls</div>
     </>
     );
 }
