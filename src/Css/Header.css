@@ -1,0 +1,36 @@
+.header {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.info {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.v1 {
+  width: 25px;
+  height: 25px;
+  outline: 1px solid rgb(175, 216, 248);
+  display: inline-block;
+  background-color: rgba(0, 190, 218, 0.75);
+}
+
+.sp {
+  width: 25px;
+  height: 25px;
+  outline: 1px solid rgb(175, 216, 248);
+  display: inline-block;
+  background-color: rgb(255, 254, 106);
+}
+
+.cb {
+  padding: 0;
+  margin: 0;
+}

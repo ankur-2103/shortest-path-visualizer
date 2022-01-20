@@ -1,11 +1,10 @@
 import React, {Component} from "react";
 import '../Css/Board.css';
 import Node from "./Node";
-// import { dijkstra, getNodesInShortestPath } from "../Algo/Dijkstra";
-// import { dijkstra, getNodesInShortestPathOrder } from "./note";
-import { unWeightedGrap, getNodesInShortestPath } from "../Algo/BFS";
+import { dijkstra, getNodesInShortestPath } from "../Algo/Dijkstra";
+
 const start_row = 10
-const start_col = 15
+const start_col = 5
 const end_row = 10
 const end_col = 55
 
@@ -79,10 +78,8 @@ export default class Board extends Component{
         const {grid} = this.state;
         const startNode = grid[start_row][start_col];
         const finishNode = grid[end_row][end_col];
-        const visitedNodes = unWeightedGrap(grid, startNode, finishNode, 'bfs');
-        // console.log(visitedNodes);
+        const visitedNodes = dijkstra(grid, startNode, finishNode, 'bfs');
         const shortestPath = getNodesInShortestPath(finishNode);
-        // console.log(shortestPath);
         this.animateVisitedNode(visitedNodes, shortestPath);
     }
 
@@ -95,7 +92,6 @@ export default class Board extends Component{
             }else{
                 setTimeout(() => {
                     const node = visitedNodes[i];
-                    // console.log(node)
                     if(!node.isStart && !node.isFinish ){
                         document.getElementById(`node-${node.row}-${node.col}`).className = 'node-visited';
                     }
@@ -117,19 +113,18 @@ export default class Board extends Component{
 
     render(){
         const {grid, mousePressed} = this.state;
-        console.log(grid);
         return (
             <>
                 <button onClick={() => this.findpath()}>
                     Find path
-                </button>
+                </button>                   
                 <div className="grid">
                     {grid.map((row, rowIdx) => {
                         return (
                             <div key={rowIdx}>
                                 {row.map((node, nodeIdx) => {
-                                    const {row, col, isStart, isFinish, isWall} = node;
-                                    return (
+                                    const {row, col, isStart, isFinish, isWall, isVisited} = node;
+                                    return (                                        
                                         <Node
                                         key={nodeIdx}
                                         row={row}
@@ -137,6 +132,7 @@ export default class Board extends Component{
                                         isStart={isStart}
                                         isFinish={isFinish}
                                         isWall={isWall}
+                                        isVisited={isVisited}
                                         mousePressed={mousePressed}
                                         onMouseDown={(row, col) => this.handleMouseDown(row, col)}
                                         onMouseEnter={(row, col) => this.handleMouseEnter(row, col)}
